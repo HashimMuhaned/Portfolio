@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+profile-img.jpg
+Automations
+full-profile-img.jpg
+ChatBot.jsx
