@@ -43,11 +43,11 @@ const About = ({ isDarkMode }) => {
           transition={{ duration: 0.6 }}
           className="w-96 sm:w-80 min-w-[20rem] shrink-0 rounded-3xl max-w-none"
         >
-          <Image
+          {/* <Image
             src={assets.user_image}
             alt="user"
             className="w-full rounded-3xl h-auto object-cover"
-          ></Image>
+          ></Image> */}
         </div>
         <div
           initial={{ opacity: 0 }}

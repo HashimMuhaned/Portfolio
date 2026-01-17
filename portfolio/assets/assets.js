@@ -1,4 +1,4 @@
-import user_image from "./full-profile-img.jpg";
+// import user_image from "./full-profile-img.jpg";
 import code_icon from "./code-icon.png";
 import edu_icon from "./edu-icon.png";
 import project_icon from "./project-icon.png";
@@ -9,7 +9,7 @@ import git from "./git.png";
 import mongodb from "./mongodb.png";
 import right_arrow_white from "./right-arrow-white.png";
 import mail_icon from "./mail_icon.png";
-import profile_img from "./profile-img.jpg";
+// import profile_img from "./profile-img.jpg";
 import download_icon from "./download-icon.png";
 import hand_icon from "./hand-icon.png";
 import header_bg_color from "./header-bg-color.png";
@@ -57,7 +57,7 @@ import rag_chatbot_company_document from "./RAG-Chatbot-for-Company-Documents.pn
 import instagram_dm from "./AI-agent-for-Instagram-DM.png";
 
 export const assets = {
-  user_image,
+  // user_image,
   code_icon,
   edu_icon,
   project_icon,
@@ -68,7 +68,7 @@ export const assets = {
   mongodb,
   right_arrow_white,
   mail_icon,
-  profile_img,
+  // profile_img,
   download_icon,
   hand_icon,
   header_bg_color,
