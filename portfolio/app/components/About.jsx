@@ -37,18 +37,18 @@ const About = ({ isDarkMode }) => {
         transition={{ duration: 0.8 }}
         className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
       >
-        <div
+        {/* <div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="w-96 sm:w-80 min-w-[20rem] shrink-0 rounded-3xl max-w-none"
         >
-          {/* <Image
+          <Image
             src={assets.user_image}
             alt="user"
             className="w-full rounded-3xl h-auto object-cover"
-          ></Image> */}
-        </div>
+          ></Image>
+        </div> */}
         <div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

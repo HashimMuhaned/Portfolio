@@ -7,7 +7,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+const Navbar = () => {
   const [showMobileDropdown, setShowMobileDropdown] = useState(false);
   const sideMenuRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -136,7 +136,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           >
             Contact
             <Image
-              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
+              src={assets.arrow_icon}
               className="w-3"
               alt=""
             ></Image>
@@ -144,7 +144,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
           <button className="block md:hidden ml-3" onClick={openSideMenu}>
             <Image
-              src={isDarkMode ? assets.menu_white : assets.menu_black}
+              src={assets.menu_black}
               alt=" "
               className="w-6"
             ></Image>
@@ -158,7 +158,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         >
           <div className="absolute top-6 right-6" onClick={closeSideMenu}>
             <Image
-              src={isDarkMode ? assets.close_white : assets.close_black}
+              src={assets.close_black}
               alt=""
               className="w-5 cursor-pointer"
             ></Image>

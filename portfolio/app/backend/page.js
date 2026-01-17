@@ -6,32 +6,32 @@ import { useEffect, useState } from "react";
 import { assets } from "@/assets/assets";
 
 export default function backend() {
-  const [isDarkMode, setIsDarkMode] = useState();
+  // const [isDarkMode, setIsDarkMode] = useState();
 
-  useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     localStorage.theme === "dark" ||
+  //     (!("theme" in localStorage) &&
+  //       window.matchMedia("(prefers-color-scheme: dark)").matches)
+  //   ) {
+  //     setIsDarkMode(true);
+  //   } else {
+  //     setIsDarkMode(false);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "";
-    }
-  }, [isDarkMode]);
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.theme = "dark";
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.theme = "";
+  //   }
+  // }, [isDarkMode]);
   return (
     <div>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Navbar />
       <div className="w-full px-[12%] py-36 scroll-mt-20">
         <h2 className="text-center text-5xl font-Ovo">No Backend Projects Yet</h2>
         {/* <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">

@@ -15,30 +15,30 @@ import {
 import Link from "next/link";
 
 export default function Frontend() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
   const closeModal = () => setSelectedProject(null);
 
-  useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setIsDarkMode(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     localStorage.theme === "dark" ||
+  //     (!("theme" in localStorage) &&
+  //       window.matchMedia("(prefers-color-scheme: dark)").matches)
+  //   ) {
+  //     setIsDarkMode(true);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "";
-    }
-  }, [isDarkMode]);
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.theme = "dark";
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.theme = "";
+  //   }
+  // }, [isDarkMode]);
 
   // Content for Frontend Service explanation
   const frontendServices = [
@@ -61,7 +61,7 @@ export default function Frontend() {
 
   return (
     <div className="dark:bg-darkTheme dark:text-white min-h-screen transition-colors duration-500">
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Navbar />
 
       <div className="w-full px-[12%] py-36 scroll-mt-20">
         {/* Navigation Back */}
