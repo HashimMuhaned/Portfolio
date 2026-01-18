@@ -82,10 +82,10 @@ export default function ChatbotsPage() {
             AI Projects & Intelligent Automations
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 font-Ovo leading-relaxed">
-            I build systems that bridge the gap between Large Language Models
+            {`I build systems that bridge the gap between Large Language Models
             and business efficiency. Whether it's a customer-facing assistant or
             a complex internal automation, my goal is to create tools that
-            provide accurate, measurable results and a seamless user experience.
+            provide accurate, measurable results and a seamless user experience.`}
           </p>
         </motion.div>
 

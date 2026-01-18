@@ -87,11 +87,11 @@ export default function Frontend() {
             Crafting Seamless Interfaces & User Experiences
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 font-Ovo leading-relaxed">
-            I specialize in turning complex designs into functional,
+            {`I specialize in turning complex designs into functional,
             high-performance web experiences. My approach focuses on the
             intersection of **clean code**, **speed**, and **accessibility**.
             Every project listed here represents a commitment to delivering
-            "wow" moments for users while meeting strict business objectives.
+            "wow" moments for users while meeting strict business objectives.`}
           </p>
         </motion.div>
 
