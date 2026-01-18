@@ -9,17 +9,9 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [showMobileDropdown, setShowMobileDropdown] = useState(false);
-  const sideMenuRef = useRef();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  const openSideMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
-  };
-
-  const closeSideMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(16rem)";
-  };
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -30,6 +22,15 @@ const Navbar = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+  }, [mobileMenuOpen]);
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setShowMobileDropdown(false); // optional but recommended
+  };
 
   return (
     <div>
@@ -43,7 +44,7 @@ const Navbar = () => {
             : ""
         }`}
       >
-        <a href="#top">
+        <a href="/#top">
           <p
             className="w-28 cursor-pointer mr-14 font-sans font-bold text-2xl text-black dark:text-white"
             alt=" "
@@ -131,32 +132,24 @@ const Navbar = () => {
           </button> */}
 
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50"
           >
             Contact
-            <Image
-              src={assets.arrow_icon}
-              className="w-3"
-              alt=""
-            ></Image>
+            <Image src={assets.arrow_icon} className="w-3" alt=""></Image>
           </a>
 
-          <button className="block md:hidden ml-3" onClick={openSideMenu}>
-            <Image
-              src={assets.menu_black}
-              alt=" "
-              className="w-6"
-            ></Image>
+          <button
+            className="block md:hidden ml-3"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Image src={assets.menu_black} alt=" " className="w-6"></Image>
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <ul
-          ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top- bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
-        >
-          <div className="absolute top-6 right-6" onClick={closeSideMenu}>
+        <ul className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top- bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white">
+          <div className="absolute top-6 right-6" onClick={closeMobileMenu}>
             <Image
               src={assets.close_black}
               alt=""
@@ -164,13 +157,13 @@ const Navbar = () => {
             ></Image>
           </div>
           <li>
-            <a className="font-Ovo" href="#top" onClick={closeSideMenu}>
+            <a className="font-Ovo" href="/#top" onClick={closeMobileMenu}>
               {" "}
               Home
             </a>
           </li>
           <li>
-            <a className="font-Ovo" href="#about" onClick={closeSideMenu}>
+            <a className="font-Ovo" href="/#about" onClick={closeMobileMenu}>
               About Me
             </a>
           </li>
@@ -188,50 +181,115 @@ const Navbar = () => {
             </button>
 
             <AnimatePresence>
-              {showMobileDropdown && (
-                <motion.ul
-                  className="ml-4 mt-2 flex flex-col gap-2 text-sm overflow-hidden"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+              {mobileMenuOpen && (
+                <motion.div
+                  className="fixed top-0 left-0 right-0 z-40 bg-white dark:bg-darkHover shadow-lg md:hidden"
+                  initial={{ y: "-100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
                 >
-                  <li>
-                    <a href="/chatbots" onClick={closeSideMenu}>
-                      - AI & Chatbots
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/backend" onClick={closeSideMenu}>
-                      - Backend
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/frontend" onClick={closeSideMenu}>
-                      - Frontend
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ecommerce" onClick={closeSideMenu}>
-                      - E-commerce
-                    </a>
-                  </li>
-                </motion.ul>
+                  <div className="flex justify-between items-center px-6 py-4 border-b dark:border-white/20">
+                    <p className="font-bold text-xl">Menu</p>
+                    <button onClick={closeMobileMenu}>
+                      <Image src={assets.close_black} alt="" className="w-5" />
+                    </button>
+                  </div>
+
+                  <ul className="flex flex-col gap-4 px-6 py-6">
+                    <li>
+                      <a href="/#top" onClick={closeMobileMenu}>
+                        Home
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/#about" onClick={closeMobileMenu}>
+                        About Me
+                      </a>
+                    </li>
+
+                    <li>
+                      <button
+                        onClick={() => setShowMobileDropdown((prev) => !prev)}
+                        className="flex items-center justify-between w-full"
+                      >
+                        Services
+                        <FaAngleDown
+                          className={`transition-transform ${
+                            showMobileDropdown ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {showMobileDropdown && (
+                          <motion.ul
+                            className="ml-4 mt-3 flex flex-col gap-2 text-sm"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                          >
+                            <li>
+                              <a href="/chatbots" onClick={closeMobileMenu}>
+                                AI & Chatbots
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/backend" onClick={closeMobileMenu}>
+                                Backend
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/frontend" onClick={closeMobileMenu}>
+                                Frontend
+                              </a>
+                            </li>
+                            <li>
+                              <a href="/ecommerce" onClick={closeMobileMenu}>
+                                E-commerce
+                              </a>
+                            </li>
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </li>
+
+                    <li>
+                      <a href="/#work" onClick={closeMobileMenu}>
+                        My Work
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/projects" onClick={closeMobileMenu}>
+                        Projects
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/#contact" onClick={closeMobileMenu}>
+                        Contact Me
+                      </a>
+                    </li>
+                  </ul>
+                </motion.div>
               )}
             </AnimatePresence>
           </li>
           <li>
-            <a className="font-Ovo" href="#work" onClick={closeSideMenu}>
+            <a className="font-Ovo" href="/#work" onClick={closeMobileMenu}>
               My Work
             </a>
           </li>
           <li>
-            <a className="font-Ovo" href="/projects" onClick={closeSideMenu}>
+            <a className="font-Ovo" href="/projects" onClick={closeMobileMenu}>
               projects
             </a>
           </li>
           <li>
-            <a className="font-Ovo" href="#contact" onClick={closeSideMenu}>
+            <a className="font-Ovo" href="/#contact" onClick={closeMobileMenu}>
               Contact Me
             </a>
           </li>

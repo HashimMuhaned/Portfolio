@@ -12,13 +12,14 @@ const About = ({ isDarkMode }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id="about"
-      className="w-full px-[12%] py-10 scroll-mt-20"
+      className="w-full px-5 sm:px-8 md:px-[10%] lg:px-[12%] py-10 scroll-mt-20"
+
     >
       <motion.h4
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-Ovo"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo"
       >
         Introduction
       </motion.h4>
@@ -26,7 +27,7 @@ const About = ({ isDarkMode }) => {
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-5xl font-Ovo"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo"
       >
         About Me
       </motion.h2>
@@ -35,7 +36,7 @@ const About = ({ isDarkMode }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="flex w-full flex-col lg:flex-row items-center gap-20 my-20"
+        className="flex w-full flex-col lg:flex-row items-center gap-10 lg:gap-20 my-12 lg:my-20"
       >
         {/* <div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -55,7 +56,7 @@ const About = ({ isDarkMode }) => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1"
         >
-          <p className="mb-10 max-w-2xl font-Ovo">
+          <p className="mb-10 max-w-2xl mx-auto lg:mx-0 text-center lg:text-left font-Ovo">
             I am a Full-Stack, AI Powered Chatbot and Automations Developer. I
             have been working in this field for the past 2 years. I have worked
             on multiple projects such as E-commerce, Market Place, Customer
@@ -66,7 +67,7 @@ const About = ({ isDarkMode }) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <motion.li
@@ -101,7 +102,7 @@ const About = ({ isDarkMode }) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.5 }}
-            className="flex items-center gap-3 sm:gap-5"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5"
           >
             {toolsData.map((tool, index) => (
               <motion.li

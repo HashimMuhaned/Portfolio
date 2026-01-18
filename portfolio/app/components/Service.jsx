@@ -1,76 +1,109 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import { assets } from "@/assets/assets";
-import { serviceData } from "@/assets/assets";
+import { assets, serviceData } from "@/assets/assets";
 import { motion } from "motion/react";
 
 const Service = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+    <motion.section
       id="services"
-      className="w-full px-[12%] py-10 scroll-mt-20"
+      className="w-full px-[10%] sm:px-[12%] py-14 scroll-mt-24"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
     >
+      {/* Section Header */}
       <motion.h4
+        className="text-center mb-2 text-lg font-Ovo text-gray-600 dark:text-gray-300"
         initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="text-center mb-2 text-lg font-Ovo"
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
       >
         What I Offer
       </motion.h4>
+
       <motion.h2
+        className="text-center text-4xl sm:text-5xl font-Ovo text-black dark:text-white"
         initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="text-center text-5xl font-Ovo"
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
       >
         My Services
       </motion.h2>
 
+      {/* Services Grid */}
       <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-12"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className="grid grid-cols-auto gap-6 my-10"
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
       >
         {serviceData.map(
           ({ icon, title, description, link, linkLabel }, index) => (
-            <motion.div
-              whileInView={{ scale: 1.05 }}
+            <motion.article
               key={index}
-              className="border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover-bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover dark:hover:shadow-white"
+              whileHover={{ y: -6, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="group border border-gray-300 dark:border-white/20
+                rounded-xl px-7 py-10 cursor-pointer
+                bg-white dark:bg-transparent
+                hover:bg-lightHover dark:hover:bg-darkHover
+                hover:shadow-xl dark:hover:shadow-white/10
+                duration-300"
             >
-              <Image
-                src={icon}
-                alt=""
-                className={`${
-                  icon === assets.chatbot_3
-                    ? "w-12 h-13 rounded"
-                    : icon == assets.store_icon
-                    ? "w-16 h-17 rounded"
-                    : icon == assets.backend_icon
-                    ? "w-14 h-15 rounded"
-                    : "w-12 h-13"
-                }`}
-              />
-              <h3 className="text-lg my-4 text-gray-700 dark:text-white">
+              {/* Icon */}
+              <div className="mb-5">
+                <Image
+                  src={icon}
+                  alt={title}
+                  className={`object-contain
+                    ${
+                      icon === assets.chatbot_3
+                        ? "w-12 h-12"
+                        : icon === assets.store_icon
+                        ? "w-16 h-16"
+                        : icon === assets.backend_icon
+                        ? "w-14 h-14"
+                        : "w-12 h-12"
+                    }`}
+                />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
                 {title}
               </h3>
-              <p className="text-gray-600 text-sm leading-5 dark:text-white/80">
+
+              {/* Description */}
+              <p className="text-sm leading-6 text-gray-600 dark:text-white/80">
                 {description}
               </p>
-              <a href={link} className="flex items-center gap-2 text-sm mt-5">
-                {linkLabel}{" "}
-                <Image src={assets.right_arrow} alt="arrow" className="w-4" />
+
+              {/* Link */}
+              <a
+                href={link}
+                className="mt-6 inline-flex items-center gap-2 text-sm font-medium
+                  text-black dark:text-white
+                  group-hover:gap-3 transition-all"
+              >
+                {linkLabel}
+                <Image
+                  src={assets.right_arrow}
+                  alt="arrow"
+                  className="w-4"
+                />
               </a>
-            </motion.div>
+            </motion.article>
           )
         )}
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 };
 

@@ -9,7 +9,13 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import Modal from "../components/Modal";
 import Navbar from "../components/Navbar";
-import { FaRobot, FaMagic, FaChartLine } from "react-icons/fa";
+import {
+  FaArrowLeftLong,
+  FaRobot,
+  FaChartLine,
+  FaWandMagicSparkles,
+} from "react-icons/fa6";
+import Link from "next/link";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -32,7 +38,7 @@ export default function Projects() {
     filter === "All"
       ? allProjects
       : allProjects.filter(
-          (project) => project.tag?.toLowerCase() === filter.toLowerCase()
+          (project) => project.tag?.toLowerCase() === filter.toLowerCase(),
         );
 
   const closeModal = () => setSelectedProject(null);
@@ -43,17 +49,26 @@ export default function Projects() {
 
       <div className="w-full px-[12%] py-36 scroll-mt-20">
         {/* --- Header Section --- */}
-        <motion.div 
+        <Link
+          href="/"
+          className="flex items-center gap-2 mb-10 text-gray-500 hover:text-black dark:hover:text-white transition-all group"
+        >
+          <FaArrowLeftLong className="group-hover:-translate-x-1 duration-200" />{" "}
+          Back to Home
+        </Link>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h4 className="text-lg font-Ovo mb-2 text-blue-600 dark:text-blue-400">Technical Portfolio</h4>
+          <h4 className="text-lg font-Ovo mb-2 text-blue-600 dark:text-blue-400">
+            Technical Portfolio
+          </h4>
           <h2 className="text-5xl font-Ovo">AI & Full-Stack Solutions</h2>
-          
+
           <p className="max-w-3xl mx-auto mt-6 text-gray-700 dark:text-gray-300 leading-relaxed font-Ovo text-lg">
-            I specialize in building intelligent ecosystems. From autonomous AI agents and 
-            RAG-based chatbots to high-performance web applications.
+            I specialize in building intelligent ecosystems. From autonomous AI
+            agents and RAG-based chatbots to high-performance web applications.
           </p>
         </motion.div>
 
@@ -61,18 +76,31 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="p-6 border border-gray-100 dark:border-white/10 rounded-2xl bg-gray-50/50 dark:bg-white/5">
             <FaRobot className="text-3xl mb-4 text-blue-500" />
-            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Custom AI Agents</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Developing LLM-powered agents that handle complex logic and customer support.</p>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+              Custom AI Agents
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Developing LLM-powered agents that handle complex logic and
+              customer support.
+            </p>
           </div>
           <div className="p-6 border border-gray-100 dark:border-white/10 rounded-2xl bg-gray-50/50 dark:bg-white/5">
-            <FaMagic className="text-3xl mb-4 text-purple-500" />
-            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Smart Automations</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Streamlining workflows using Make.com, Zapier, and Python.</p>
+            <FaWandMagicSparkles className="text-3xl mb-4 text-purple-500" />
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+              Smart Automations
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Streamlining workflows using Make.com, Zapier, and Python.
+            </p>
           </div>
           <div className="p-6 border border-gray-100 dark:border-white/10 rounded-2xl bg-gray-50/50 dark:bg-white/5">
             <FaChartLine className="text-3xl mb-4 text-green-500" />
-            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Scalable Full-Stack</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Building robust interfaces with Next.js and React.</p>
+            <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+              Scalable Full-Stack
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Building robust interfaces with Next.js and React.
+            </p>
           </div>
         </div>
 
@@ -80,22 +108,24 @@ export default function Projects() {
 
         {/* --- Filter Section --- */}
         <div className="flex flex-col items-center mb-12">
-            <h3 className="text-2xl font-Ovo mb-6 dark:text-white">Project Gallery</h3>
-            <div className="flex flex-wrap justify-center items-center gap-3">
+          <h3 className="text-2xl font-Ovo mb-6 dark:text-white">
+            Project Gallery
+          </h3>
+          <div className="flex flex-wrap justify-center items-center gap-3">
             {categories.map((cat) => (
-                <button
+              <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${
-                    filter === cat
+                  filter === cat
                     ? "bg-black text-white border-black dark:bg-white dark:text-black"
                     : "border-gray-300 hover:border-black dark:border-white/20 text-gray-600 dark:text-gray-400"
                 }`}
-                >
+              >
                 {cat}
-                </button>
+              </button>
             ))}
-            </div>
+          </div>
         </div>
 
         {/* --- Projects Grid --- */}
@@ -120,10 +150,10 @@ export default function Projects() {
                   - Added padding (p-4) so it doesn't touch the edges.
                 */}
                 <div className="relative w-full h-full p-4">
-                  <Image 
-                    src={project.image} 
-                    alt={project.title} 
-                    fill 
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
                     className="object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -192,11 +222,11 @@ export default function Projects() {
                 <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full text-xs font-bold uppercase">
                   {selectedProject.tag}
                 </span>
-                
+
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mt-4">
                   {selectedProject.title}
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mt-4 italic border-l-4 border-blue-500 pl-4">
                   {selectedProject.description}
                 </p>

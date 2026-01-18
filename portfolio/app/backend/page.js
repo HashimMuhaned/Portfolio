@@ -4,6 +4,10 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { assets } from "@/assets/assets";
+import {
+  FaArrowLeftLong
+} from "react-icons/fa6";
+import Link from "next/link";
 
 export default function backend() {
   // const [isDarkMode, setIsDarkMode] = useState();
@@ -33,7 +37,16 @@ export default function backend() {
     <div>
       <Navbar />
       <div className="w-full px-[12%] py-36 scroll-mt-20">
-        <h2 className="text-center text-5xl font-Ovo">No Backend Projects Yet</h2>
+        <Link
+          href="/"
+          className="flex items-center gap-2 mb-10 text-gray-500 hover:text-black dark:hover:text-white transition-all group"
+        >
+          <FaArrowLeftLong className="group-hover:-translate-x-1 duration-200" />{" "}
+          Back to Home
+        </Link>
+        <h2 className="text-center text-5xl font-Ovo">
+          No Backend Projects Yet
+        </h2>
         {/* <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
           Those are full stack Project the I have worked on, with happy clients
         </p> */}
