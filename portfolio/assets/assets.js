@@ -55,6 +55,7 @@ import Complete_AI_Powered_WhatsApp_RAG_Chatbot_with_OpenAI from "./Complete-AI-
 import handling_appointment from "./Handling-Appointment-Leads.png";
 import rag_chatbot_company_document from "./RAG-Chatbot-for-Company-Documents.png";
 import instagram_dm from "./AI-agent-for-Instagram-DM.png";
+import google_image from "./image.png"
 
 export const assets = {
   // user_image,
@@ -110,6 +111,7 @@ export const assets = {
   handling_appointment,
   rag_chatbot_company_document,
   instagram_dm,
+  google_image
 };
 
 export const workData = [
@@ -232,6 +234,20 @@ export const frontendProjectstDataDisplay = [
     ],
     link: "https://hashimmuhaned.github.io/Engineizer/",
   },
+  {
+    image: assets.google_image,
+    title: "googe",
+    description: "googe demo to my friend",
+    detailedDescription: "fafadsfffffffa",
+    techUseed: [
+      assets.figma,
+      assets.vscode,
+      assets.cssIcon,
+      assets.HTML_icon,
+      assets.JSLogo,
+      assets.git,
+    ],
+  }
 ];
 
 export const AiProjectstDataDisplay = [
